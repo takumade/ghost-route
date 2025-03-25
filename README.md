@@ -59,6 +59,6 @@ MIT License
 ## Credits
 
 - [CVE-2025-29927](https://nvd.nist.gov/vuln/detail/CVE-2025-29927)
-- [WriteUp](https://zhero-web-sec.github.io/research-and-things/nextjs-and-the-corrupt-middleware)
+- [Next.js and the corrupt middleware: the authorizing artifact](https://zhero-web-sec.github.io/research-and-things/nextjs-and-the-corrupt-middleware)
 - Rachid A.
 - Yasser Allam
