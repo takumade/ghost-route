@@ -5,7 +5,7 @@ A Python script to check Next.js sites for middleware vulnerabilities (CVE-2025-
 > [!WARNING]
 > This tool is for educational purposes only. Do not use it on websites or systems you do not own or have explicit permission to test. Unauthorized testing may be illegal and unethical.
 
-> [!DISCLAIMER]
+> [!NOTE]
 > The author of this script is not responsible for any damage or legal issues that may arise from its use. Use at your own risk.
 
 ## Installation
