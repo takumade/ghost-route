@@ -1,5 +1,7 @@
 # 👻 Ghost Route
 
+![Logo](https://raw.githubusercontent.com/takumade/ghost-route/main/ghost-route.png)
+
 A Python script to check Next.js sites for middleware vulnerabilities (CVE-2025-29927).
 
 > [!WARNING]
