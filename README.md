@@ -2,7 +2,12 @@
 
 ![Logo](https://raw.githubusercontent.com/takumade/ghost-route/main/ghost-route.png)
 
-A Python script to check Next.js sites for middleware vulnerabilities (CVE-2025-29927).
+A Python script to check Next.js sites for corrupt middleware vulnerability (CVE-2025-29927).
+
+The corrupt middleware vulnerability allows an attacker to bypass authentication and access protected routes by send a custom header `x-middleware-subrequest`. 
+
+Next JS versions affected: 
+- 11.1.4 and up
 
 > [!WARNING]
 > This tool is for educational purposes only. Do not use it on websites or systems you do not own or have explicit permission to test. Unauthorized testing may be illegal and unethical.
