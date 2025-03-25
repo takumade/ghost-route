@@ -17,6 +17,18 @@ git clone https://github.com/takumade/ghost-route.git
 cd ghost-route
 ```
 
+Create and activate virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
 
 
 ## Usage
