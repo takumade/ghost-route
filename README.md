@@ -34,8 +34,13 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python ghost-route.py <url> <path>
+python ghost-route.py <url> <path> <show_headers>
 ```
+
+- `<url>`: Base URL of the Next.js site (e.g., https://example.com)
+- `<path>`: Protected path to test (default: /admin)
+- `<show_headers>`: Show response headers (default: False)
+  
 
 ## Example
 
