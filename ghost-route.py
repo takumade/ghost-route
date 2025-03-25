@@ -1,13 +1,13 @@
 import requests
 import argparse
 
-def check_nextjs_middleware_vulnerability(base_url, test_path):
+def check_nextjs_middleware_vulnerability(url, path):
     """
     Check for Next.js middleware vulnerability (CVE-2025-29927)
     
     Args:
-        base_url (str): Base URL of the Next.js application
-        test_path (str): Protected path to test
+        url (str): Base URL of the Next.js application
+        path (str): Protected path to test
     """
     # Configurations to test based on different Next.js versions
     payloads = [
@@ -23,7 +23,7 @@ def check_nextjs_middleware_vulnerability(base_url, test_path):
         'src/middleware:src/middleware:src/middleware:src/middleware:src/middleware'
     ]
 
-    print(f"🕵️ Checking {base_url} for Next.js Middleware Vulnerability (CVE-2025-29927)")
+    print(f"🕵️ Checking {url} for Next.js Middleware Vulnerability (CVE-2025-29927)")
 
     for payload in payloads:
         try:
@@ -34,7 +34,7 @@ def check_nextjs_middleware_vulnerability(base_url, test_path):
             
             # Allow redirects and accept all status codes
             response = requests.get(
-                base_url + test_path, 
+                url + path, 
                 headers=headers, 
                 allow_redirects=True
             )
@@ -79,7 +79,7 @@ def main():
     args = parser.parse_args()
 
     # Run vulnerability check
-    check_nextjs_middleware_vulnerability(args.base_url, args.test_path)
+    check_nextjs_middleware_vulnerability(args.url, args.path)
 
 if __name__ == "__main__":
     main()
