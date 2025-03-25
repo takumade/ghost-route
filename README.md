@@ -48,8 +48,14 @@ python ghost-route.py <url> <path> <show_headers>
 
 ## Example
 
+Basic Example
 ```bash
 python ghost-route.py https://example.com /admin
+```
+
+Show Response Headers
+```bash
+python ghost-route.py https://example.com /admin True
 ```
 
 ## License
