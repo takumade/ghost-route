@@ -1,7 +1,7 @@
 import requests
 import argparse
 
-def check_nextjs_middleware_vulnerability(url, path):
+def check_nextjs_middleware_vulnerability(url, path, show_headers):
     """
     Check for Next.js middleware vulnerability (CVE-2025-29927)
     
@@ -44,14 +44,17 @@ def check_nextjs_middleware_vulnerability(url, path):
             print(f"Accessed URL: {response.url}")
             
             # Check if accessing a protected path that should have been blocked
-            if response.status_code not in [403, 401, 302]:
+            if response.status_code not in [403, 401, 302, 404]:
                 print(f"🚨 POTENTIAL VULNERABILITY DETECTED with payload: {payload}")
                 print('The site might be vulnerable to middleware bypass!')
                 
                 # Additional details about the response
-                print("Response Headers:")
-                for header, value in response.headers.items():
-                    print(f"{header}: {value}")
+                if show_headers:
+                    print("Response Headers:")
+                    for header, value in response.headers.items():
+                        print(f"{header}: {value}")
+            else:
+                print("✅ No vulnerability detected with payload:", payload)            
         
         except requests.RequestException as e:
             print(f"Error testing payload {payload}: {e}")
@@ -74,12 +77,19 @@ def main():
         default='/admin', 
         help='Protected path to test (default: /admin)'
     )
+    
+    parser.add_argument(
+        'show_headers', 
+        nargs='?', 
+        default=False, 
+        help='Show response headers (default: False)'
+    )
 
     # Parse arguments
     args = parser.parse_args()
 
     # Run vulnerability check
-    check_nextjs_middleware_vulnerability(args.url, args.path)
+    check_nextjs_middleware_vulnerability(args.url, args.path, args.show_headers)
 
 if __name__ == "__main__":
     main()
