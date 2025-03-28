@@ -1,6 +1,17 @@
 import requests
 import argparse
 
+
+signin_paths = ['/signin', '/login', '/auth/login', '/auth/signin']
+register_paths = ['/register', '/auth/register', '/auth/register']
+
+def check_url_contains_path(url, paths, type):
+    for path in paths:
+        if path in url:
+            print(f"✅ {type} Path {path} found in URL: {url}")
+            return True
+    return False
+
 def check_nextjs_middleware_vulnerability(url, path, show_headers):
     """
     Check for Next.js middleware vulnerability (CVE-2025-29927)
@@ -44,7 +55,12 @@ def check_nextjs_middleware_vulnerability(url, path, show_headers):
             print(f"Accessed URL: {response.url}")
             
             # Check if accessing a protected path that should have been blocked
-            if response.status_code not in [403, 401, 302, 404]:
+            
+            contains_success_codes = contains_success_codes(response.status_code)
+            contains_login_paths = check_url_contains_path(response.url, signin_paths, "login")
+            contains_register_paths = check_url_contains_path(response.url, register_paths, "register")
+            
+            if not contains_success_codes and not contains_login_paths and not contains_register_paths:
                 print(f"🚨 POTENTIAL VULNERABILITY DETECTED with payload: {payload}")
                 print('The site might be vulnerable to middleware bypass!')
                 
